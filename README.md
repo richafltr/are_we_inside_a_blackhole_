@@ -42,6 +42,8 @@ The first demo should accept a live change to the experimental goal and complete
 
 Use Node.js, TypeScript, Vite/React, Three.js, and browser-based verification. Keep Gemini credentials on the server in environment variables. Verify the event's builder guide for API access and model availability rather than inventing SDK signatures or silently substituting a model. The initial scaffold should work without a key for local deterministic experiments; live generation must clearly report missing credentials.
 
+The [event builder guide](https://docs.google.com/document/d/1kN0n6hPNNTIHMVqf5-hDACrZuIg4KFrWiYpla4WQW8w/edit) specifies the Interactions API and `@google/genai` version 2.3.0 or later. Its Argon examples use `thinking_level`; verify the current TypeScript types before implementing requests. Keep scene generation and revision bounded so a live demonstration can finish promptly.
+
 ## Current status
 
 Repository initialized with the research brief, hackathon scope, and sources. Application code, datasets, runtime dependencies, and automated tests have not been added yet. There is no runnable demo or verified build command at this stage.
