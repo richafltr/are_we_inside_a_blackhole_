@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==84.2.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "argon-scientific-dry-lab"
+version = "0.1.0"
+description = "Headless, evidence-linked scientific investigation workspace for Gemini Argon"
+requires-python = ">=3.12"
+dependencies = ["google-genai==2.33.0"]
+
+[project.scripts]
+argon-lab = "argon_lab.cli:main"
+
+[tool.setuptools.package-data]
+argon_lab = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

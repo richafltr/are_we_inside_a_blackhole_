@@ -31,25 +31,47 @@ The lab must distinguish measured data, paper-derived estimates, synthetic contr
 
 Target **Million Token Engineering** at the [Gemini 4 Argon SF Hackathon](https://cerebralvalley.ai/e/gemini-4-argon-sf/details): an agent maintains and verifies a scientific investigation across evidence, code, experiments, and revisions. The public repo must identify work created during the event. The guide excludes Streamlit applications, basic RAG, and dashboard-led projects. Submission is due **25 October 2026 at 5:00 PM Pacific**; prepare a live demonstration and one-minute video.
 
-- [ ] Build a Python scientific workspace and a headless Gemini research runner with explicit experiment tools.
-- [ ] Add an evidence manifest with primary-source links, paper versions, units, uncertainty fields, and data availability/rights status.
-- [ ] Implement tools to inspect evidence, create experiments, execute bounded analyses, inspect artifacts, and record revisions.
-- [ ] Provide one reproducible initial investigation and synthetic control to validate the lab; do not pre-script the agent's scientific conclusion.
-- [ ] Integrate real Gemini Argon tool calls and persist the experiment/critique/revision trace.
-- [ ] Compare a single-pass response baseline with a tool-assisted investigation under recorded budgets; measure reproducibility, citation traceability, checks passed, and time. These metrics assess research process, not the truth of an unverified cosmology.
-- [ ] Test tool contracts, numerical checks, execution limits, provenance, and end-to-end artifact replay.
-- [ ] Document actual setup commands, contribution provenance, limitations, and the short live demo.
+- [x] Build a Python scientific workspace and a headless Gemini research runner with explicit experiment tools.
+- [x] Add an evidence manifest with primary-source links, paper versions, units, uncertainty fields, and data availability/rights status.
+- [x] Implement tools to inspect evidence, create experiments, execute bounded analyses, inspect artifacts, and record revisions.
+- [x] Provide one reproducible initial investigation and synthetic control to validate the lab; do not pre-script the agent's scientific conclusion.
+- [x] Implement real Gemini Argon Interactions calls and persistent traces; SDK/mock contracts verified, live access untested.
+- [x] Instrument a single-pass response baseline with a tool-assisted investigation under recorded budgets; measure reproducibility, citation traceability, checks passed, and time. These metrics assess research process, not the truth of an unverified cosmology.
+- [x] Test tool contracts, numerical checks, execution limits, provenance, and end-to-end artifact replay.
+- [x] Document actual setup commands, contribution provenance, limitations, and the short live demo.
 
 Use Gemini 4 Argon (`gemini-4-argon`) as the investigator; Codex GPT-6.1 Sol High is the development agent. The [event builder guide](https://docs.google.com/document/d/1kN0n6hPNNTIHMVqf5-hDACrZuIg4KFrWiYpla4WQW8w/edit) specifies the Interactions API and `google-genai` or `@google/genai` version 2.3.0 or later. Verify current official SDK types and event access before implementation. Keep credentials in environment variables. Missing credentials must be explicit; fixture replay must never masquerade as a live investigation.
 
 ## Current status
 
-Research brief and agent guidance are committed. The laboratory implementation is pending. No live Gemini investigation, research result, or application test pass is claimed.
+A runnable Python headless lab, evidence registry, bounded numerical tools, Gemini Interactions adapter and deterministic artifact replay are implemented. The authored fixture exercises a failed numerical check, critique, revision and synthetic selection control. It is **not a Gemini transcript or a cosmological result**. No live Gemini investigation or model-performance result is claimed; credentials were not supplied.
+
+See [laboratory contracts and limitations](docs/architecture.md), [one-minute demonstration](docs/demo.md) and [contribution provenance](CONTRIBUTIONS.md), and [verified checks](docs/validation.md).
 
 ```sh
-git clone https://github.com/richafltr/are_we_inside_a_blackhole_.git
+git clone --branch codex/argon-dry-lab https://github.com/richafltr/are_we_inside_a_blackhole_.git
 cd are_we_inside_a_blackhole_
+python3.12 -m venv .venv
+. .venv/bin/activate
+python -m pip install --require-hashes -r requirements.lock
+python -m pytest -q
+python -m argon_lab demo --out work/demo
+python -m argon_lab replay --run work/demo
+python -m argon_lab compare-fixture --out work/comparison
 ```
+
+Verified on Linux/Python 3.12. Offline demo/replay use only the standard library; install the hash-pinned lock for the supported SDK/test environment. Outputs are saved under `work/` and are ignored by Git. Use a fresh output directory on each run.
+
+For a live investigation, securely set `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) with access to the event model and permit outbound `generativelanguage.googleapis.com`, then run:
+
+```sh
+python -m argon_lab live --out work/live --thinking-level high
+python -m argon_lab compare-live --out work/live-comparison --thinking-level high
+```
+
+The first live command has a 150s budget; the two-arm comparison can take five minutes. Without a key, the CLI exits 2, saves `blocked_credentials`, and explicitly says no live call was attempted. The development cloud had neither a key nor Google API network access. API behavior, event access and live demo completion remain unverified. The adapter uses only `gemini-4-argon` and never substitutes another model.
+
+A run preserves code, JSON inputs, seeds, resource limits, logs/results, independent checks, evidence/source links, critique/revision state, raw interaction contracts (live only), a report and artifact hashes. Replay recomputes analyses rather than just reading saved results. Process metrics assess reproducibility and traceability; fixture comparisons measure authored software coverage, not Gemini quality. An intentionally failed coarse integration check remains visible in the trace.
 
 ## Starting sources
 
