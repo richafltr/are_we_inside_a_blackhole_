@@ -1,0 +1,18 @@
+{
+  "elapsed_seconds": 0.03339834400003383,
+  "limits": {
+    "cpu_seconds": 2,
+    "file_bytes": 128000,
+    "memory_bytes": 268435456,
+    "result_bytes": 64000,
+    "source_bytes": 24000,
+    "wall_seconds": 3.0
+  },
+  "result": {
+    "age_gyr": 0.2840053367200052,
+    "steps": 8192
+  },
+  "returncode": 0,
+  "status": "ok",
+  "stderr": ""
+}

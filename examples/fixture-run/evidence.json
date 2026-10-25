@@ -1,0 +1,145 @@
+{
+  "entries": [
+    {
+      "authors": "Finner et al.",
+      "availability": "summary_only",
+      "id": "finner-xlssc122",
+      "kind": "paper_summary",
+      "missing_data": [
+        "lens/source positions and covariance",
+        "mass-profile posterior",
+        "comparison selection function"
+      ],
+      "quantities": [
+        {
+          "kind": "reported_summary",
+          "name": "redshift",
+          "uncertainty": null,
+          "uncertainty_status": "not supplied in repository summary",
+          "unit": "dimensionless",
+          "value": 1.98
+        }
+      ],
+      "rights": "External primary-source links only; no third-party images or catalogs redistributed. Verify source reuse terms before import.",
+      "selection_effects": [
+        "lensing selection",
+        "mass-profile assumptions",
+        "projection and source-redshift uncertainty"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2508.08356v1",
+        "https://doi.org/10.3847/2041-8213/ae1d80"
+      ],
+      "summary": "Strong lensing and an unusually concentrated core motivate structure-growth investigation; no lens catalog or likelihood is bundled.",
+      "title": "JWST Discovery of Strong Lensing from a Galaxy Cluster at Cosmic Noon: Giant Arcs and a Highly Concentrated Core of XLSSC 122",
+      "version": "arXiv:2508.08356v1 (2025-08-11); journal DOI ae1d80"
+    },
+    {
+      "authors": "Naidu et al.",
+      "availability": "summary_only",
+      "id": "naidu-momz14",
+      "kind": "paper_summary",
+      "missing_data": [
+        "flux/spectrum covariance",
+        "survey completeness and volume",
+        "explicit abundance likelihood",
+        "paper cosmology parameters for exact reproduction"
+      ],
+      "quantities": [
+        {
+          "kind": "reported_summary",
+          "name": "redshift",
+          "source_location": "https://arxiv.org/abs/2505.11263v2 (abstract, verified 2026-10-25)",
+          "uncertainty": {
+            "confidence_level": null,
+            "minus": 0.02,
+            "plus": 0.02,
+            "unit": "dimensionless"
+          },
+          "uncertainty_status": "Reported in the v2 primary-source abstract; confidence level not stated in abstract; no raw spectrum bundled",
+          "unit": "dimensionless",
+          "value": 14.44
+        },
+        {
+          "kind": "model_dependent_inference",
+          "name": "cosmic_age",
+          "uncertainty": null,
+          "uncertainty_status": "approximate paper-derived age under adopted cosmology, not independent measurement",
+          "unit": "Myr",
+          "value": 280
+        }
+      ],
+      "rights": "External primary-source links only; verify source reuse terms before importing spectra or imagery.",
+      "selection_effects": [
+        "survey volume and completeness",
+        "luminosity selection",
+        "stellar-population assumptions"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2505.11263v2",
+        "https://arxiv.org/pdf/2505.11263v2"
+      ],
+      "summary": "A luminous early galaxy with unusual nitrogen enrichment, young stellar population and rapidly rising star formation. Enrichment alone is not an age measurement.",
+      "title": "A Cosmic Miracle: A Remarkably Luminous Galaxy at z = 14.44 Confirmed with JWST",
+      "version": "arXiv:2505.11263v2 (2026-01-28)"
+    },
+    {
+      "authors": "Shamir",
+      "availability": "summary_only",
+      "id": "shamir-jades",
+      "kind": "paper_summary",
+      "missing_data": [
+        "object-level classifications and uncertainty",
+        "selection and classifier calibration",
+        "independent fields",
+        "quantitative alternative cosmology predictions"
+      ],
+      "quantities": [],
+      "rights": "External primary-source links only; no image cutouts redistributed.",
+      "selection_effects": [
+        "sample selection",
+        "classification bias",
+        "observer effects",
+        "field/cosmic variance"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2502.18781v1",
+        "https://academic.oup.com/mnras/article/538/1/76/8019798?login=false"
+      ],
+      "summary": "Reported apparent spiral-direction imbalance. No observational counts or classifications are bundled; do not infer or invent them.",
+      "title": "The distribution of galaxy rotation in JWST Advanced Deep Extragalactic Survey",
+      "version": "arXiv:2502.18781v1 (2025-02-26); MNRAS 538(1),76 (2025)"
+    },
+    {
+      "authors": "Original dry-lab implementation",
+      "availability": "reproducible_generator",
+      "id": "synthetic-selection-control",
+      "kind": "synthetic_control",
+      "missing_data": [
+        "any mapping from toy sampling to a real telescope survey"
+      ],
+      "quantities": [
+        {
+          "kind": "theoretical_assumption",
+          "name": "selection_probability",
+          "uncertainty": null,
+          "uncertainty_status": "chosen toy assumption, not measured",
+          "unit": "dimensionless",
+          "value": 0.65
+        }
+      ],
+      "rights": "Original project code and generated numeric controls; no external data.",
+      "selection_effects": [
+        "direction-dependent sampling deliberately injected"
+      ],
+      "sources": [
+        "repo:argon_lab/fixture.py"
+      ],
+      "summary": "Synthetic apparent-direction labels generated from a biased Bernoulli process. This tests process and confounding, not JADES or cosmology.",
+      "title": "Seeded Bernoulli selection-bias control",
+      "version": "generator-v1"
+    }
+  ],
+  "registry_basis": "Repository main 068aeccf562ec43b600793d61716273912596baf; source summaries only, not downloaded measurements",
+  "schema_version": 1
+}

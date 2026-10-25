@@ -1,0 +1,22 @@
+{
+  "mode": "fixture",
+  "integrity_verified": true,
+  "recomputed_experiments": [
+    {
+      "experiment_id": "exp-001",
+      "recomputed": true,
+      "checks_passed": false
+    },
+    {
+      "experiment_id": "exp-002",
+      "recomputed": true,
+      "checks_passed": true
+    },
+    {
+      "experiment_id": "exp-003",
+      "recomputed": true,
+      "checks_passed": true
+    }
+  ],
+  "note": "Hash consistency and deterministic recomputation, not authenticity or scientific truth. Failed numerical checks remain failed."
+}

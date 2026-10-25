@@ -1,0 +1,29 @@
+{
+  "code_sha256": "7e1098f68650dd02cb2379c16459648fbfd08f20bd70c488b77e50a475955912",
+  "critique_id": null,
+  "evidence_ids": [
+    "shamir-jades",
+    "synthetic-selection-control"
+  ],
+  "hypotheses": [
+    {
+      "assumptions": "Independent labels, fixed n=256 and threshold .01 specified before sampling.",
+      "falsification": "Reject toy unbiased null if exact two-sided p<.01, with no cosmological inference.",
+      "id": "unbiased-labels",
+      "prediction": "Independent equally likely labels have Binomial(n,.5) counts; a two-sided p<.01 rejects this toy null at the specified rule."
+    },
+    {
+      "assumptions": "Synthetic Bernoulli labels; bias deliberately injected. Not fitted to JADES data.",
+      "falsification": "A count inconsistent with the generating probability warrants checking generator and sampling; one sample cannot identify the cause of real survey asymmetry.",
+      "id": "selection-confounder",
+      "prediction": "Injected probability .65 produces a direction excess without any cosmological mechanism."
+    }
+  ],
+  "id": "exp-003",
+  "inputs_sha256": "9b64fc91043ddd3f31054e0cbb6cdc6f0818e1e4f1c16ec73daa987a1e6297e9",
+  "parent_id": null,
+  "question": "Can selection alone produce apparent directional excess in a synthetic control?",
+  "seed": 1729,
+  "status": "proposed",
+  "verifier": "binomial_control"
+}

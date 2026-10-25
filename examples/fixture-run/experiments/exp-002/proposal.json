@@ -1,0 +1,28 @@
+{
+  "code_sha256": "cb03105db462f759b0c3f209ccb332b01e1d6b70974560dc4b6f688f8fcd000f",
+  "critique_id": "critique-001",
+  "evidence_ids": [
+    "naidu-momz14"
+  ],
+  "hypotheses": [
+    {
+      "assumptions": "Flat matter+Lambda FLRW toy; no radiation, cosmological parameters chosen for demonstration, not a fit.",
+      "falsification": "Relative error greater than1e-5 falsifies numerical adequacy at the proposed resolution.",
+      "id": "converged-baseline",
+      "prediction": "For H0=67.4 km/s/Mpc, Omega_m=.315, z=14.44, numerical age agrees with the exact flat matter+Lambda expression within relative1e-5."
+    },
+    {
+      "assumptions": "Same integrand and parameters; only quadrature resolution varies. Neither hypothesis is a black-hole cosmology.",
+      "falsification": "If refinement does not reduce disagreement, discretization alone is insufficient.",
+      "id": "discretization-error",
+      "prediction": "A very coarse midpoint rule disagrees with the analytic reference; increasing resolution decreases numerical error."
+    }
+  ],
+  "id": "exp-002",
+  "inputs_sha256": "3d4ff431e6086309b4807ac62eaf7bb5e82bc5a40bb438deff55633aa2c63985",
+  "parent_id": "exp-001",
+  "question": "Can a checked age calculation and a synthetic selection control supply discriminating cosmological evidence?",
+  "seed": 42,
+  "status": "proposed",
+  "verifier": "flat_age"
+}

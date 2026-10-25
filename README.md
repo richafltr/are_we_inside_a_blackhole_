@@ -71,7 +71,7 @@ python -m argon_lab compare-live --out work/live-comparison --thinking-level hig
 
 The first live command has a 150s budget; the two-arm comparison can take five minutes. Without a key, the CLI exits 2, saves `blocked_credentials`, and explicitly says no live call was attempted. The development cloud had neither a key nor Google API network access. API behavior, event access and live demo completion remain unverified. The adapter uses only `gemini-4-argon` and never substitutes another model.
 
-A run preserves code, JSON inputs, seeds, resource limits, logs/results, independent checks, evidence/source links, critique/revision state, raw interaction contracts (live only), a report and artifact hashes. Replay recomputes analyses rather than just reading saved results. Process metrics assess reproducibility and traceability; fixture comparisons measure authored software coverage, not Gemini quality. An intentionally failed coarse integration check remains visible in the trace.
+A run preserves code, JSON inputs, seeds, resource limits, logs/results, independent checks, evidence/source links, critique/revision state, raw interaction contracts (live only), a report and artifact hashes. Replay recomputes analyses rather than just reading saved results. Process metrics assess reproducibility and traceability; fixture comparisons measure authored software coverage, not Gemini quality. An intentionally failed coarse integration check remains visible in the trace. A [saved authored run](examples/fixture-run/report.md) and [recomputation summary](examples/fixture-replay.json) are included for inspection.
 
 ## Starting sources
 

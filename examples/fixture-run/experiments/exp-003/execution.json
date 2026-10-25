@@ -1,0 +1,20 @@
+{
+  "elapsed_seconds": 0.03452608700001747,
+  "limits": {
+    "cpu_seconds": 2,
+    "file_bytes": 128000,
+    "memory_bytes": 268435456,
+    "result_bytes": 64000,
+    "source_bytes": 24000,
+    "wall_seconds": 3.0
+  },
+  "result": {
+    "generating_probability": 0.65,
+    "k": 145,
+    "n": 256,
+    "p_value": 0.038951834162314077
+  },
+  "returncode": 0,
+  "status": "ok",
+  "stderr": ""
+}
