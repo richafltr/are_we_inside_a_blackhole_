@@ -1,10 +1,12 @@
 # Are We Inside a Black Hole?
 
-A hackathon scientific sandbox for exploring what James Webb Space Telescope observations tell us about early cosmic structure—and what it would take to test a black-hole-universe hypothesis.
+A 3D scientific experiment environment where Gemini 4 Argon builds, renders, critiques, and revises cosmology scenes grounded in James Webb Space Telescope observations.
 
 ## The idea
 
-Build an interactive environment where people can inspect published observations, change model assumptions, and compare predictions with evidence. Start with unusually early galaxies, concentrated galaxy clusters, and reported galaxy-spin asymmetries. Keep the question open: what can ordinary galaxy-formation physics explain, and what observations could distinguish more speculative cosmologies?
+Give a researcher or scientific creator a way to turn a cited observation and an explicit set of assumptions into an inspectable 3D experiment. The core interaction is a loop: describe a goal, generate a constrained scene, render it, let Gemini inspect the rendered result alongside numerical checks, then apply and replay a revision.
+
+Start with a synthetic gravitational-lensing experiment inspired by XLSSC 122. Show how changing a lens model changes rendered arcs, preserve the before/after scene and verification results, and keep the source paper attached to the relevant constraints. Later experiments can explore early galaxy formation and reported galaxy-spin asymmetries. A rendered scene is an illustration of the selected model, not a reconstruction of the observed universe or new evidence for that model.
 
 **Scientific stance:** the cited findings motivate investigation; they do not demonstrate that we live inside a black hole or, by themselves, overturn ΛCDM. Tension with a galaxy-formation prediction is not automatically a failure of the underlying cosmological model. Black-hole cosmology remains a hypothesis to explore with explicit assumptions and testable predictions.
 
@@ -18,20 +20,31 @@ Build an interactive environment where people can inspect published observations
 
 MoM-z14's abundance pattern should not be reduced to “an old, mature galaxy”: the paper also describes a young stellar population and rapidly rising star formation.
 
-## Hackathon scope
+## Hackathon target
 
-- [ ] Build a reproducible scientific workspace with documented setup and checks.
-- [ ] Add a small, cited observation catalog with units, uncertainties, paper versions, and provenance.
-- [ ] Implement a baseline redshift–cosmic-age calculator with visible cosmological parameters.
-- [ ] Create an interactive evidence explorer and a transparent toy-model playground.
-- [ ] Compare baseline assumptions with clearly labeled alternatives; distinguish measured data, inferred quantities, and simulated examples.
-- [ ] Document limitations and identify observations that could falsify each proposed explanation.
+Target **More Dimensions** at the [Gemini 4 Argon SF Hackathon](https://cerebralvalley.ai/e/gemini-4-argon-sf/details): generated 3D environments with a render–inspect–critique–repair loop. Use Gemini 4 Argon (`gemini-4-argon`) in the product; Codex is the development agent.
 
-The first demo should let someone select an observation, inspect its source, vary an assumption, and understand how the comparison changes. It should never produce a fabricated probability that we live inside a black hole.
+The participant guide requires a public repository and clearly identified work created during the event. It excludes Streamlit applications, basic RAG, and dashboard-led projects. Submission is due **25 October 2026 at 5:00 PM Pacific**, with an accessible demo and a one-minute video. Teams have 1–4 members.
+
+## First working demo
+
+- [ ] Set up a TypeScript web application with a React/Three.js 3D viewport and a small server-side Gemini adapter.
+- [ ] Define a validated scene schema: source citations, units, assumptions, synthetic objects, camera, constraints, and reproducible seed.
+- [ ] Implement one deterministic lensing toy model and a manipulable 3D scene; document its physical approximations.
+- [ ] Connect a real Gemini generation call, capture rendered frames, and send those frames plus numerical checks back for critique and a constrained revision.
+- [ ] Show one real failure, one repair, and a replayable before/after comparison in the world itself.
+- [ ] Test numerical invariants and scene validation; measure constraint violations before and after repair, loop latency, and rendering performance.
+- [ ] Record original contributions, asset provenance, setup commands, and a one-minute demo script.
+
+The first demo should accept a live change to the experimental goal and complete a visible verification loop. A fixture replay can support development, but must be labeled and cannot stand in for the live Gemini integration. Scientific hypotheses require evidence beyond visual plausibility; the system must never manufacture a probability that we live inside a black hole.
+
+## Implementation direction
+
+Use Node.js, TypeScript, Vite/React, Three.js, and browser-based verification. Keep Gemini credentials on the server in environment variables. Verify the event's builder guide for API access and model availability rather than inventing SDK signatures or silently substituting a model. The initial scaffold should work without a key for local deterministic experiments; live generation must clearly report missing credentials.
 
 ## Current status
 
-Repository initialized with the research brief and sources. Application code, datasets, runtime dependencies, and automated tests have not been added yet. There is no runnable demo or verified build command at this stage.
+Repository initialized with the research brief, hackathon scope, and sources. Application code, datasets, runtime dependencies, and automated tests have not been added yet. There is no runnable demo or verified build command at this stage.
 
 ```sh
 git clone https://github.com/richafltr/are_we_inside_a_blackhole_.git
