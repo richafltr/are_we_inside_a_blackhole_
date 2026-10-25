@@ -1,0 +1,16 @@
+[
+  {
+    "name": "finite_json",
+    "passed": true
+  },
+  {
+    "name": "seeded_count",
+    "passed": true,
+    "reference": 145
+  },
+  {
+    "name": "exact_two_sided_binomial",
+    "passed": true,
+    "reference": 0.03895183416231408
+  }
+]

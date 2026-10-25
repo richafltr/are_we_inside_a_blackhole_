@@ -1,0 +1,13 @@
+[
+  {
+    "name": "finite_json",
+    "passed": true
+  },
+  {
+    "actual_gyr": 0.2840053367200052,
+    "name": "analytic_flat_age",
+    "passed": true,
+    "reference_gyr": 0.2840053018646834,
+    "relative_tolerance": 1e-05
+  }
+]

@@ -1,0 +1,43 @@
+# Laboratory contracts
+
+`python -m argon_lab` is the headless interface. `Lab.dispatch` exposes evidence inspection, experiment proposal, bounded execution, artifact inspection, critique, revision and report submission. The real investigator path uses only `gemini-4-argon`; the offline scenario is authored application validation and never pretends to be a Gemini transcript.
+
+Each proposal records at least two hypotheses, predictions, falsification criteria, assumptions and known evidence IDs before source code executes. Proposals save immutable code, inputs, seed and hashes. Run an experiment once; changing it requires a critique and a new linked proposal. Evidence metadata separates paper summaries, model-dependent estimates, synthetic controls and theoretical assumptions. The repository contains no primary measurement catalog. Numerical cosmological model comparison therefore requires more evidence and explicit quantitative alternative predictions.
+
+The state file preserves investigation status, question, experiments, critiques and claims. The append-only trace records tools, pre-experiment predictions, results, critiques and errors. A report requires registry-linked claims, valid experiment references and unresolved questions. Computed claims require successfully executed experiments whose configured checks pass. This validates references and numerical contracts, not whether an arbitrary natural-language claim follows from them. A human scientific review remains necessary.
+
+## Execution boundary
+
+The laboratory intentionally accepts a small numerical Python language, not unrestricted Python. An AST whitelist rejects imports, host file access, environment access, introspection, dynamic calls, decorators, classes and arbitrary attributes. Only documented basic numeric/container builtins, selected math functions and a seeded RNG are available. Analysis assigns a JSON object to `result`; the trusted worker saves it. Native extensions, package installation, shell execution and general filesystem output are unavailable. This lets the investigator write integrals, test statistics, simulations and bounded sensitivity calculations while keeping the language inspectable.
+
+A fresh Linux subprocess receives a temporary working directory and an environment containing only locale/hash settings, without API credentials. It runs Python in isolated mode and has wall 3s, CPU 2s, address space 256MiB, file 128KB, source 24KB, request 64KB and result 64KB limits. Input JSON in a proposal is limited to 16KB. A timed-out process group is killed. Logs, result and resource limits are saved even when execution fails. Code cannot create output files under this language; fixed worker stdout/stderr files bound disk use per analysis. The supported runtime is Linux/Python 3.12; resource-limit code is not portable to Windows.
+
+This constrained interpreter is not a hardened OS sandbox for hostile arbitrary Python. Bubblewrap was present in the development environment but could not create the required network namespace. Do not widen the language or expose this local runner to untrusted public users without an OS/container sandbox and security review. Source validation and bounded execution are part of the implementation and are tested. The subprocess uses no network functions or credentials; network denial is supplied by the language restriction, not a claimed network namespace.
+
+## Numerical verification
+
+`flat_age` checks numerical age against an independently implemented analytic solution for a flat matter+Lambda FLRW toy, using H0 in km/s/Mpc and output Gyr. Radiation is omitted. The exact expression is
+
+`t(a) = H0^-1 * 2/(3 sqrt(1-Omega_m)) * asinh(sqrt((1-Omega_m)/Omega_m) * a^(3/2))`.
+
+This follows by integrating `da/(a H(a))` for `H(a)^2/H0^2=Omega_m/a^3+1-Omega_m`. It is a developer-derived reference, not a fit to the papers. Parameters are visible and bounded. Relative tolerance is 1e-5, absolute 1e-8 Gyr. It is not an exact reproduction of the MoM-z14 paper's cosmology.
+
+`binomial_control` independently regenerates seeded labels and computes the exact two-sided probability under the symmetric Binomial(n,.5) toy null using a recurrence; the experiment uses combinations. n is bounded 1..512. A toy-null p-value is not the probability of a hypothesis, a cosmological posterior, or a result for JADES. `finite_only` checks JSON structure/finiteness only; it is not independent scientific verification.
+
+The authored scenario starts with eight midpoint bins, fails the analytic age check, records a critique, refines to 8192 bins, then passes. It also runs a synthetic n = 256 Bernoulli selection control with chosen probability 0.65 and seed 1729. Predictions and a 0.01 toy rejection rule are registered before the control executes. This validates a failure/revision path; it does not measure autonomous model behavior.
+
+## Replay and provenance
+
+Runs save `evidence.json`, `environment.json`, `state.json`, `trace.jsonl`, `report.md`, `metrics.json`, archived worker/verifier source and the dependency lock, plus experiment proposals, Python source, input JSON, seeds, execution logs/results and checks. Live runs additionally save request/response contracts, interaction IDs/statuses and API-reported token usage. API keys stay in environment variables; SDK exception text is not copied to reports.
+
+`replay` verifies SHA256 artifact hashes and source/input hashes, requires the installed worker/verifier to match the archived runtime, then **executes each saved analysis again** and recomputes independent checks. It compares deterministic results/checks, not timing fields. An intentionally failed numerical check must remain failed. The manifest checks consistency, not cryptographic authenticity; someone replacing all artifacts and hashes can construct another run. Keep trusted commits or sign artifacts for stronger provenance. Exact deterministic replay is supported for the same Python/runtime and platform; RNG/library changes can require the archived checkout.
+
+## Gemini integration and process comparison
+
+Official contracts were verified on 2026-10-25 against installed `google-genai==2.33.0` types, the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions), [function calling](https://ai.google.dev/gemini-api/docs/function-calling?api=interactions) and the [event builder guide](https://docs.google.com/document/d/1kN0n6hPNNTIHMVqf5-hDACrZuIg4KFrWiYpla4WQW8w/edit). The SDK satisfies the event minimum 2.3.0. Calls use `client.interactions.create`, `generation_config.thinking_level`, `max_output_tokens`, function declarations, `steps` function calls, `call_id` results and `previous_interaction_id`. Every continuation resends system instruction, tool declarations and generation configuration. No temperature/top_p/top_k is set. SDK response typing and continuation contracts are tested with an explicitly fake transport. No live credential or live model result was available during development.
+
+Live defaults: up to 8 interactions, output cap 4096/request, 4 experiments, 24 tool calls and 150s total wall time per arm, with retries disabled. The request timeout receives the remaining wall budget. A blocking SDK/OS failure may still affect exact elapsed time; the 150s cap is intended to fit a three-minute demo, not a real-time service guarantee. Requests are stored server-side to use continuation IDs; do not send confidential research inputs without checking provider retention/access requirements.
+
+`compare-live` gives the same question and evidence to a one-response/no-tools arm and an iterative arm. Each arm has its own 150s wall cap; the combined comparison can take up to five minutes. Unequal tool and interaction budgets are explicit, so this is a budgeted workflow comparison, not a controlled claim that iteration alone improves performance. Saved process metrics count valid registry links, executions, independent/structural checks, critiques, revisions, elapsed time and API usage. They do not score scientific truth, citation entailment or semantic accuracy. Single-pass output must parse as the evidence-linked report schema. Malformed or incomplete output is recorded as failure rather than silently graded as success.
+
+`compare-fixture` exercises the same process instrumentation without a model or API key. Its authored baseline and iterative scenario are **not Gemini responses and not model benchmarks**. Use the live comparison with repeated preregistered tasks and independent scientific review before drawing model-performance conclusions. The implementation supports bounded context continuity and trace inspection; it has not been validated at one million tokens.

@@ -1,0 +1,29 @@
+{
+  "files": {
+    "environment.json": "1ab5eaef39e1b86c804fea00d434286bd82f9f57c27149daee6dbcdba5c106bb",
+    "evidence.json": "1549d303b8d054d224eb0f49490fcd4c8adb72040473dada8dac4efe57355c73",
+    "experiments/exp-001/checks.json": "4fb7bfc1529ac108d09dd3ac308e52389b4b0fe99fad55016243f7ae2dabcce2",
+    "experiments/exp-001/execution.json": "9080b0a49544a5f4f6931fdefa9f217149e5db38967fae3db4119111dc695040",
+    "experiments/exp-001/experiment.py": "cb03105db462f759b0c3f209ccb332b01e1d6b70974560dc4b6f688f8fcd000f",
+    "experiments/exp-001/inputs.json": "a8e2d8865469188f19fde59a160f6a5a8c51df75557b5452bbcd843f9f214f27",
+    "experiments/exp-001/proposal.json": "1fa145da223d5bf49e59936ce3b49168f2d82b40eceee7a7ccc3df9f767586e6",
+    "experiments/exp-002/checks.json": "10a9c1e83c09a5556ea8c1edfc9845cfc456b3ce71a0ceaaf6c9661cf3132ee9",
+    "experiments/exp-002/execution.json": "173e3216746ebbeb9682713dce58dc6e8bb63ed9a98ad046e729924b19589dec",
+    "experiments/exp-002/experiment.py": "cb03105db462f759b0c3f209ccb332b01e1d6b70974560dc4b6f688f8fcd000f",
+    "experiments/exp-002/inputs.json": "3d4ff431e6086309b4807ac62eaf7bb5e82bc5a40bb438deff55633aa2c63985",
+    "experiments/exp-002/proposal.json": "68a5218d5075758d170c8f6d373e2ed670f2390451004dede784587921d48552",
+    "experiments/exp-003/checks.json": "c8365bc4feecd641faff7be948ed65fc317071e893767451f0b9ded4fff64974",
+    "experiments/exp-003/execution.json": "75eda52d271f3c14a06badde62e1508ad8d5fd1c4a686573f2e0edd8318ae0e7",
+    "experiments/exp-003/experiment.py": "7e1098f68650dd02cb2379c16459648fbfd08f20bd70c488b77e50a475955912",
+    "experiments/exp-003/inputs.json": "9b64fc91043ddd3f31054e0cbb6cdc6f0818e1e4f1c16ec73daa987a1e6297e9",
+    "experiments/exp-003/proposal.json": "7d4a9d199c551f70849fd715f91a17fb1686af411808d297036d02f562b7e701",
+    "metrics.json": "5d2cfe2d6b01e0b10d5dffb95d3b20df4a6891937f309aca1118407621389e78",
+    "report.md": "f3d651c53df6d289eaeda580fafedc1fde047c50b0b8a06a8bb95ab60aee1ca7",
+    "runtime/execution.py": "527a1fd82ec615c788851d33dbf7eec379a5d92531323a15a32a097ac0d686b2",
+    "runtime/requirements.lock": "112022d1b8b1dcd8a4efc5f2dc05c8a4389bf2e7d51b64dd4a28c6d4f8f5d706",
+    "runtime/worker.py": "5db9dbe6509a65d15ed841830e3a5199f41c4b15f184f64cea99e5e06d43dc5b",
+    "state.json": "76a47640dbc6e5ca4546a63398ec17c7698ca7db4f494fc5ee924012347ba8ee",
+    "trace.jsonl": "b7be98acdedfd24a986e313b6a0b50c26975cf21c9c34382495771e1db7d34c3"
+  },
+  "schema_version": 1
+}

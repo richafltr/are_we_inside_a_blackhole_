@@ -1,0 +1,20 @@
+{
+  "budget": {
+    "max_experiments": 4,
+    "max_tool_calls": 24,
+    "wall_seconds": 150
+  },
+  "checks_passed": 6,
+  "checks_total": 7,
+  "claims_with_valid_registry_links": 3,
+  "critiques": 2,
+  "elapsed_seconds": 0.21311563900007968,
+  "executed_experiments": 3,
+  "experiments": 3,
+  "is_model_benchmark": false,
+  "mode": "fixture",
+  "reproducibility": "measured separately by deterministic replay",
+  "revisions": 1,
+  "semantic_claim_accuracy": "not measured",
+  "tool_calls": 11
+}

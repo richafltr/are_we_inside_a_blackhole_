@@ -1,0 +1,98 @@
+{
+  "budget_policy": "Task budgets differ intentionally: single response/no tools versus iterative4 experiments/24 tools/150s. No claim of equal compute or model superiority.",
+  "interpretation": "Counts demonstrate instrumented process coverage only; no model output, model-quality measurement or cosmology truth score.",
+  "iterative": {
+    "budget": {
+      "max_experiments": 4,
+      "max_tool_calls": 24,
+      "wall_seconds": 150
+    },
+    "checks_passed": 6,
+    "checks_total": 7,
+    "claims_with_valid_registry_links": 3,
+    "critiques": 2,
+    "elapsed_seconds": 0.12279714600003899,
+    "executed_experiments": 3,
+    "experiments": 3,
+    "is_model_benchmark": false,
+    "mode": "fixture",
+    "reproducibility": "measured separately by deterministic replay",
+    "revisions": 1,
+    "semantic_claim_accuracy": "not measured",
+    "tool_calls": 11
+  },
+  "label": "AUTHORED SOFTWARE FIXTURE; NOT GEMINI PERFORMANCE",
+  "replay": {
+    "integrity_verified": true,
+    "mode": "fixture",
+    "note": "Hash consistency and deterministic recomputation, not authenticity or scientific truth. Failed numerical checks remain failed.",
+    "recomputed_experiments": [
+      {
+        "checks_passed": false,
+        "experiment_id": "exp-001",
+        "recomputed": true
+      },
+      {
+        "checks_passed": true,
+        "experiment_id": "exp-002",
+        "recomputed": true
+      },
+      {
+        "checks_passed": true,
+        "experiment_id": "exp-003",
+        "recomputed": true
+      }
+    ]
+  },
+  "reproducibility": {
+    "iterative": {
+      "integrity_verified": true,
+      "mode": "fixture",
+      "note": "Hash consistency and deterministic recomputation, not authenticity or scientific truth. Failed numerical checks remain failed.",
+      "recomputed_experiments": [
+        {
+          "checks_passed": false,
+          "experiment_id": "exp-001",
+          "recomputed": true
+        },
+        {
+          "checks_passed": true,
+          "experiment_id": "exp-002",
+          "recomputed": true
+        },
+        {
+          "checks_passed": true,
+          "experiment_id": "exp-003",
+          "recomputed": true
+        }
+      ]
+    },
+    "single_pass": {
+      "integrity_verified": true,
+      "mode": "fixture",
+      "note": "Hash consistency and deterministic recomputation, not authenticity or scientific truth. Failed numerical checks remain failed.",
+      "recomputed_experiments": []
+    }
+  },
+  "same_question_and_evidence": true,
+  "single_pass": {
+    "budget": {
+      "max_experiments": 0,
+      "max_tool_calls": 0,
+      "wall_seconds": 150
+    },
+    "checks_passed": 0,
+    "checks_total": 0,
+    "claims_with_valid_registry_links": 1,
+    "critiques": 0,
+    "elapsed_seconds": 0.0064773879998938355,
+    "executed_experiments": 0,
+    "experiments": 0,
+    "is_model_benchmark": false,
+    "mode": "fixture",
+    "reproducibility": "measured separately by deterministic replay",
+    "revisions": 0,
+    "semantic_claim_accuracy": "not measured",
+    "tool_calls": 0
+  }
+}

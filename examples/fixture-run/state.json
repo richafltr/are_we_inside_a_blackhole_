@@ -1,0 +1,156 @@
+{
+  "budget": {
+    "max_experiments": 4,
+    "max_tool_calls": 24,
+    "wall_seconds": 150
+  },
+  "critiques": [
+    {
+      "experiment_id": "exp-001",
+      "finding": "The independent analytic check fails at 8 midpoint bins. An integration error is not a cosmological anomaly.",
+      "id": "critique-001",
+      "next_test": "Increase to8192 bins, retain parameters, compare against independent analytic reference."
+    },
+    {
+      "experiment_id": "exp-003",
+      "finding": "A small toy-null p-value cannot distinguish classifier/selection effects from cosmological causes. No JADES object catalog is available.",
+      "id": "critique-002",
+      "next_test": "Obtain independent fields, calibrated classifications, selection function and explicit alternative model predictions before observational model selection."
+    }
+  ],
+  "experiments": {
+    "exp-001": {
+      "checks_passed": false,
+      "code_sha256": "cb03105db462f759b0c3f209ccb332b01e1d6b70974560dc4b6f688f8fcd000f",
+      "critique_id": null,
+      "evidence_ids": [
+        "naidu-momz14"
+      ],
+      "hypotheses": [
+        {
+          "assumptions": "Flat matter+Lambda FLRW toy; no radiation, cosmological parameters chosen for demonstration, not a fit.",
+          "falsification": "Relative error greater than1e-5 falsifies numerical adequacy at the proposed resolution.",
+          "id": "converged-baseline",
+          "prediction": "For H0=67.4 km/s/Mpc, Omega_m=.315, z=14.44, numerical age agrees with the exact flat matter+Lambda expression within relative1e-5."
+        },
+        {
+          "assumptions": "Same integrand and parameters; only quadrature resolution varies. Neither hypothesis is a black-hole cosmology.",
+          "falsification": "If refinement does not reduce disagreement, discretization alone is insufficient.",
+          "id": "discretization-error",
+          "prediction": "A very coarse midpoint rule disagrees with the analytic reference; increasing resolution decreases numerical error."
+        }
+      ],
+      "id": "exp-001",
+      "inputs_sha256": "a8e2d8865469188f19fde59a160f6a5a8c51df75557b5452bbcd843f9f214f27",
+      "parent_id": null,
+      "question": "Can a checked age calculation and a synthetic selection control supply discriminating cosmological evidence?",
+      "seed": 42,
+      "status": "ok",
+      "verifier": "flat_age"
+    },
+    "exp-002": {
+      "checks_passed": true,
+      "code_sha256": "cb03105db462f759b0c3f209ccb332b01e1d6b70974560dc4b6f688f8fcd000f",
+      "critique_id": "critique-001",
+      "evidence_ids": [
+        "naidu-momz14"
+      ],
+      "hypotheses": [
+        {
+          "assumptions": "Flat matter+Lambda FLRW toy; no radiation, cosmological parameters chosen for demonstration, not a fit.",
+          "falsification": "Relative error greater than1e-5 falsifies numerical adequacy at the proposed resolution.",
+          "id": "converged-baseline",
+          "prediction": "For H0=67.4 km/s/Mpc, Omega_m=.315, z=14.44, numerical age agrees with the exact flat matter+Lambda expression within relative1e-5."
+        },
+        {
+          "assumptions": "Same integrand and parameters; only quadrature resolution varies. Neither hypothesis is a black-hole cosmology.",
+          "falsification": "If refinement does not reduce disagreement, discretization alone is insufficient.",
+          "id": "discretization-error",
+          "prediction": "A very coarse midpoint rule disagrees with the analytic reference; increasing resolution decreases numerical error."
+        }
+      ],
+      "id": "exp-002",
+      "inputs_sha256": "3d4ff431e6086309b4807ac62eaf7bb5e82bc5a40bb438deff55633aa2c63985",
+      "parent_id": "exp-001",
+      "question": "Can a checked age calculation and a synthetic selection control supply discriminating cosmological evidence?",
+      "seed": 42,
+      "status": "ok",
+      "verifier": "flat_age"
+    },
+    "exp-003": {
+      "checks_passed": true,
+      "code_sha256": "7e1098f68650dd02cb2379c16459648fbfd08f20bd70c488b77e50a475955912",
+      "critique_id": null,
+      "evidence_ids": [
+        "shamir-jades",
+        "synthetic-selection-control"
+      ],
+      "hypotheses": [
+        {
+          "assumptions": "Independent labels, fixed n=256 and threshold .01 specified before sampling.",
+          "falsification": "Reject toy unbiased null if exact two-sided p<.01, with no cosmological inference.",
+          "id": "unbiased-labels",
+          "prediction": "Independent equally likely labels have Binomial(n,.5) counts; a two-sided p<.01 rejects this toy null at the specified rule."
+        },
+        {
+          "assumptions": "Synthetic Bernoulli labels; bias deliberately injected. Not fitted to JADES data.",
+          "falsification": "A count inconsistent with the generating probability warrants checking generator and sampling; one sample cannot identify the cause of real survey asymmetry.",
+          "id": "selection-confounder",
+          "prediction": "Injected probability .65 produces a direction excess without any cosmological mechanism."
+        }
+      ],
+      "id": "exp-003",
+      "inputs_sha256": "9b64fc91043ddd3f31054e0cbb6cdc6f0818e1e4f1c16ec73daa987a1e6297e9",
+      "parent_id": null,
+      "question": "Can selection alone produce apparent directional excess in a synthetic control?",
+      "seed": 1729,
+      "status": "ok",
+      "verifier": "binomial_control"
+    }
+  },
+  "mode": "fixture",
+  "question": "Can a checked age calculation and a synthetic selection control supply discriminating cosmological evidence?",
+  "report": {
+    "claims": [
+      {
+        "evidence_ids": [
+          "naidu-momz14"
+        ],
+        "experiment_ids": [
+          "exp-002"
+        ],
+        "kind": "computed",
+        "text": "The revised toy flat matter+Lambda calculation gives age 0.284005 Gyr at z14.44 and passes its analytic numerical check. This does not reproduce the paper cosmology or compare cosmologies."
+      },
+      {
+        "evidence_ids": [
+          "synthetic-selection-control",
+          "shamir-jades"
+        ],
+        "experiment_ids": [
+          "exp-003"
+        ],
+        "kind": "computed",
+        "text": "Synthetic control generated 145 of256 labels in one direction with injected selection probability .65. The conditional unbiased-null two-sided p-value is 0.0389518; it concerns the toy process only. The preregistered .01 rejection threshold is not crossed in this seeded realization."
+      },
+      {
+        "evidence_ids": [
+          "finner-xlssc122",
+          "naidu-momz14",
+          "shamir-jades"
+        ],
+        "experiment_ids": [],
+        "kind": "limitation",
+        "text": "The three supplied paper summaries lack the object-level data, selection functions and quantitative alternative predictions needed for cosmological model comparison. This authored fixture tests the laboratory and supplies no black-hole-universe likelihood."
+      }
+    ],
+    "unresolved_questions": [
+      "Which quantitative black-hole cosmology makes a prediction distinct from a specified standard model?",
+      "Can primary catalogs and uncertainties be imported with valid reuse terms?",
+      "Would calibrated selection controls explain directional imbalance in independent fields?"
+    ]
+  },
+  "schema_version": 1,
+  "status": "reported",
+  "tool_calls": 11
+}
