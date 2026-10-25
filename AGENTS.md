@@ -5,12 +5,11 @@
 
 # Project guidance
 
-- Follow the Gemini 4 Argon SF Hackathon participant guide: https://cerebralvalley.ai/e/gemini-4-argon-sf/details. Target More Dimensions with a 3D generate/render/inspect/critique/repair loop. Do not build Streamlit, a dashboard-led application, basic RAG, or an education chatbot.
-- The product uses Gemini 4 Argon (`gemini-4-argon`); the Codex development agent remains GPT-6.1 Sol High. These are separate roles. Verify official API documentation and event-specific access before implementing model calls; never silently substitute another model.
-- Use a TypeScript/React/Three.js web stack with server-side credentials. Keep deterministic simulation and scene validation separate from model-generated content. Label replay/fixture mode clearly.
-- Preserve event-work provenance and attribution. The repository must remain public for submission; disclose reused assets and prior work. Do not submit a hackathon entry or contact organizers without explicit user authorization.
-- Read README.md before implementation. Preserve its distinction between observations, model-dependent inferences, and speculative hypotheses.
-- Cite primary sources for scientific values. Store units, uncertainties, source URLs, and paper versions alongside data.
-- Label synthetic data and toy models clearly. Never claim these papers establish a black-hole universe or manufacture confidence scores for that claim.
-- Keep setup reproducible, choose lightweight dependencies, document real commands, and run checks appropriate to implemented functionality.
-- Do not commit credentials, local environment files, downloaded restricted material, or large raw datasets.
+- Read README.md. Build an autonomous scientific dry lab: Gemini Argon is the investigator; the product supplies evidence, tools, experiment execution, provenance, verification, and reproducible artifacts.
+- Target the hackathon Million Token Engineering track. Do not build Streamlit, a dashboard-led application, basic RAG, an education chatbot, or a 3D-world-first product. Visuals are optional research instruments.
+- The product model is gemini-4-argon; the development agent is GPT-6.1 Sol High. Verify the event builder guide and official Interactions API SDK before coding calls. Do not silently substitute a model or claim a live test without credentials.
+- Use Python scientific tooling and a headless CLI/tool runner initially. Keep synthetic controls and fixture replays explicitly labeled. Do not hardcode the scientific conclusion.
+- Require testable predictions before claiming to compare cosmologies. Preserve uncertainties, units, source versions, selection effects, and missing-data limitations. Inconclusive is a valid result; never invent observational data, likelihoods, or confidence in a black-hole universe.
+- Bound experiment execution, preserve scripts/logs/seeds, and keep credentials outside generated code and reports.
+- Keep the repository public for submission and identify original event work and reused assets. Do not submit an entry or contact organizers without explicit authorization.
+- Keep setup reproducible and document only real verified commands. Do not commit secrets, local environment files, restricted downloads, or large raw data.

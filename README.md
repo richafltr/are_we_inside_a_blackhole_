@@ -1,52 +1,50 @@
 # Are We Inside a Black Hole?
 
-A 3D scientific experiment environment where Gemini 4 Argon builds, renders, critiques, and revises cosmology scenes grounded in James Webb Space Telescope observations.
+A reproducible computational dry lab in which Gemini 4 Argon investigates whether available cosmological evidence can distinguish a black-hole-universe hypothesis from standard explanations.
 
-## The idea
+## What we are building
 
-Give a researcher or scientific creator a way to turn a cited observation and an explicit set of assumptions into an inspectable 3D experiment. The core interaction is a loop: describe a goal, generate a constrained scene, render it, let Gemini inspect the rendered result alongside numerical checks, then apply and replay a revision.
+**The product is the laboratory. Gemini Argon is the scientist operating inside it.** Give the agent a research question, cited evidence, computational tools, and an experiment workspace. It should formulate competing hypotheses, derive testable predictions, write and run analyses, inspect failures, revise its reasoning, and produce a reproducible scientific argument. “The evidence cannot distinguish these hypotheses” is a valid result.
 
-Start with a synthetic gravitational-lensing experiment inspired by XLSSC 122. Show how changing a lens model changes rendered arcs, preserve the before/after scene and verification results, and keep the source paper attached to the relevant constraints. Later experiments can explore early galaxy formation and reported galaxy-spin asymmetries. A rendered scene is an illustration of the selected model, not a reconstruction of the observed universe or new evidence for that model.
+This is an agent research environment, with a headless runner and inspectable experiment artifacts as the first interface. Visualizations and simulations are instruments the investigator can create when needed.
 
-**Scientific stance:** the cited findings motivate investigation; they do not demonstrate that we live inside a black hole or, by themselves, overturn ΛCDM. Tension with a galaxy-formation prediction is not automatically a failure of the underlying cosmological model. Black-hole cosmology remains a hypothesis to explore with explicit assumptions and testable predictions.
+## Scientific starting point
 
-## Observations that motivate the project
+- **XLSSC 122:** strong lensing and an unusually concentrated dark-matter core at redshift 1.98 motivate investigation of early structure growth.
+- **MoM-z14:** a luminous galaxy at spectroscopic redshift 14.44, about 280 million years after the Big Bang under the paper's cosmology, motivates investigation of early star formation and enrichment. Unusual nitrogen enrichment does not by itself make it an old, mature galaxy.
+- **JADES galaxy rotation:** a reported directional imbalance motivates investigation of selection, classification, observer effects, and possible cosmological interpretations.
 
-| Case study | What the paper reports | What we want to explore |
-| --- | --- | --- |
-| XLSSC 122 | Strong lensing in a cluster at redshift 1.98, with an unusually concentrated dark-matter core. | How inferred mass profiles depend on lensing constraints and assumptions about structure growth. |
-| MoM-z14 | A luminous galaxy at spectroscopic redshift 14.44, about 280 million years after the Big Bang under the adopted cosmology, with unusual nitrogen enrichment. | Early star formation, chemical enrichment, and the abundance of bright galaxies versus model expectations. |
-| JADES galaxy rotation | A reported imbalance in apparent spiral rotation directions in a deep field. | Sample selection, classification, observer effects, and alternative explanations before cosmological interpretation. |
+These findings do not establish that we live inside a black hole. Tension with a galaxy-formation prediction is not automatically a failure of ΛCDM. Alternative cosmologies must supply quantitative, distinguishable predictions before the lab can compare them. A suggestive analogy or a universe-size/Schwarzschild-radius coincidence is not a model-selection result.
 
-MoM-z14's abundance pattern should not be reduced to “an old, mature galaxy”: the paper also describes a young stellar population and rapidly rising star formation.
+## The investigation loop
 
-## Hackathon target
+1. Inspect evidence, source versions, uncertainties, units, selection effects, and missing data.
+2. State competing hypotheses, assumptions, predictions, and a falsification criterion before running an experiment.
+3. Write an executable analysis; run it inside the isolated workspace with a bounded compute budget.
+4. Inspect numerical checks, errors, artifacts, and whether the result actually discriminates between hypotheses.
+5. Challenge the result with controls, sensitivity checks, or an alternative explanation; revise and rerun.
+6. Export an evidence-linked report, experiment code, inputs, seeds, logs, and unresolved questions.
 
-Target **More Dimensions** at the [Gemini 4 Argon SF Hackathon](https://cerebralvalley.ai/e/gemini-4-argon-sf/details): generated 3D environments with a render–inspect–critique–repair loop. Use Gemini 4 Argon (`gemini-4-argon`) in the product; Codex is the development agent.
+The lab must distinguish measured data, paper-derived estimates, synthetic controls, and theoretical assumptions. If only a paper summary is available, the agent must identify the missing data instead of fabricating observations or likelihoods. It must not produce a made-up probability that we live inside a black hole.
 
-The participant guide requires a public repository and clearly identified work created during the event. It excludes Streamlit applications, basic RAG, and dashboard-led projects. Submission is due **25 October 2026 at 5:00 PM Pacific**, with an accessible demo and a one-minute video. Teams have 1–4 members.
+## Hackathon scope
 
-## First working demo
+Target **Million Token Engineering** at the [Gemini 4 Argon SF Hackathon](https://cerebralvalley.ai/e/gemini-4-argon-sf/details): an agent maintains and verifies a scientific investigation across evidence, code, experiments, and revisions. The public repo must identify work created during the event. The guide excludes Streamlit applications, basic RAG, and dashboard-led projects. Submission is due **25 October 2026 at 5:00 PM Pacific**; prepare a live demonstration and one-minute video.
 
-- [ ] Set up a TypeScript web application with a React/Three.js 3D viewport and a small server-side Gemini adapter.
-- [ ] Define a validated scene schema: source citations, units, assumptions, synthetic objects, camera, constraints, and reproducible seed.
-- [ ] Implement one deterministic lensing toy model and a manipulable 3D scene; document its physical approximations.
-- [ ] Connect a real Gemini generation call, capture rendered frames, and send those frames plus numerical checks back for critique and a constrained revision.
-- [ ] Show one real failure, one repair, and a replayable before/after comparison in the world itself.
-- [ ] Test numerical invariants and scene validation; measure constraint violations before and after repair, loop latency, and rendering performance.
-- [ ] Record original contributions, asset provenance, setup commands, and a one-minute demo script.
+- [ ] Build a Python scientific workspace and a headless Gemini research runner with explicit experiment tools.
+- [ ] Add an evidence manifest with primary-source links, paper versions, units, uncertainty fields, and data availability/rights status.
+- [ ] Implement tools to inspect evidence, create experiments, execute bounded analyses, inspect artifacts, and record revisions.
+- [ ] Provide one reproducible initial investigation and synthetic control to validate the lab; do not pre-script the agent's scientific conclusion.
+- [ ] Integrate real Gemini Argon tool calls and persist the experiment/critique/revision trace.
+- [ ] Compare a single-pass response baseline with a tool-assisted investigation under recorded budgets; measure reproducibility, citation traceability, checks passed, and time. These metrics assess research process, not the truth of an unverified cosmology.
+- [ ] Test tool contracts, numerical checks, execution limits, provenance, and end-to-end artifact replay.
+- [ ] Document actual setup commands, contribution provenance, limitations, and the short live demo.
 
-The first demo should accept a live change to the experimental goal and complete a visible verification loop. A fixture replay can support development, but must be labeled and cannot stand in for the live Gemini integration. Scientific hypotheses require evidence beyond visual plausibility; the system must never manufacture a probability that we live inside a black hole.
-
-## Implementation direction
-
-Use Node.js, TypeScript, Vite/React, Three.js, and browser-based verification. Keep Gemini credentials on the server in environment variables. Verify the event's builder guide for API access and model availability rather than inventing SDK signatures or silently substituting a model. The initial scaffold should work without a key for local deterministic experiments; live generation must clearly report missing credentials.
-
-The [event builder guide](https://docs.google.com/document/d/1kN0n6hPNNTIHMVqf5-hDACrZuIg4KFrWiYpla4WQW8w/edit) specifies the Interactions API and `@google/genai` version 2.3.0 or later. Its Argon examples use `thinking_level`; verify the current TypeScript types before implementing requests. Keep scene generation and revision bounded so a live demonstration can finish promptly.
+Use Gemini 4 Argon (`gemini-4-argon`) as the investigator; Codex GPT-6.1 Sol High is the development agent. The [event builder guide](https://docs.google.com/document/d/1kN0n6hPNNTIHMVqf5-hDACrZuIg4KFrWiYpla4WQW8w/edit) specifies the Interactions API and `google-genai` or `@google/genai` version 2.3.0 or later. Verify current official SDK types and event access before implementation. Keep credentials in environment variables. Missing credentials must be explicit; fixture replay must never masquerade as a live investigation.
 
 ## Current status
 
-Repository initialized with the research brief, hackathon scope, and sources. Application code, datasets, runtime dependencies, and automated tests have not been added yet. There is no runnable demo or verified build command at this stage.
+Research brief and agent guidance are committed. The laboratory implementation is pending. No live Gemini investigation, research result, or application test pass is claimed.
 
 ```sh
 git clone https://github.com/richafltr/are_we_inside_a_blackhole_.git
